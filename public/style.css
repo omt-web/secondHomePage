@@ -1,0 +1,15 @@
+/** 전체 테스트 css */
+
+/* @font-face를 사용하여 외부 폰트를 지정 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #FFC0CB; /* 연핑크색 */
+    font-family: 'SUIT-Regular', sans-serif; /* 지정한 폰트 */
+    /* 기본적으로 sans-serif 폰트가 없는 경우에는 지정한 외부 폰트가 로드됩니다. */
+}

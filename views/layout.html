@@ -1,0 +1,21 @@
+<!-- * 넌적스 문법 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/style.css" /> 
+    <!-- * / 의 위치가 기본 public 폴더로 되어있음 -->
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+    <header>헤더입니다</header>
+        {% block content %}
+        {% endblock %}
+    <footer>푸터입니다</fㄹ>
+        {% block script %}
+        {% endblock %}
+</body>
+</html>
