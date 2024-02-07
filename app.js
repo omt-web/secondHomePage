@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 const path = require('path');   // html파일 연결시 추가
 const exp = require('constants');
 const nunjucks = require('nunjucks');
+const fs = require('fs');
+
 
 dotenv.config();
 const indexRouter = require('./routes');
@@ -76,15 +78,64 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'views')));
 
+//* 기존 내용
+// app.use((err, req, res, next) => {
+//     console.error(err);
+//     res.locals.message = err.message;
+//     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
+//     res.status(err.status || 500);
+//     res.render('error');
+//     // res.status(500).send(err.message);
+// })
 
-app.use((err, req, res, next) => {
-    console.error(err);
-    res.locals.message = err.message;
-    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
-    // res.status(500).send(err.message);
-})
+//* header.html, footer.html, main.html을 layout.html에 삽입하는 내용
+app.use((req, res, next) => {
+    // Reading header.html
+    fs.readFile('/views/header', 'utf8', (err, headerData) => {
+        if (err) {
+            console.error("Error reading header file:", err);
+            return next(err);
+        }
+        
+        // Reading footer.html
+        fs.readFile('views/footer.html', 'utf8', (err, footerData) => {
+            if (err) {
+                console.error("Error reading footer file:", err);
+                return next(err);
+            }
+
+            // Reading main.html
+            fs.readFile('views/main.html', 'utf8', (err, mainData) => {
+                if (err) {
+                    console.error("Error reading main file:", err);
+                    return next(err);
+                }
+
+                // Reading layout.html
+                fs.readFile('views/layout.html', 'utf8', (err, layoutData) => {
+                    if (err) {
+                        console.error("Error reading layout file:", err);
+                        return next(err);
+                    }
+
+                    // Replace '{% block header %}' with the contents of header.html
+                    let renderedLayout = layoutData.replace('{% block header %}', headerData);
+                    // Replace '{% block footer %}' with the contents of footer.html
+                    renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+                    // Replace '{% block main %}' with the contents of main.html
+                    renderedLayout = renderedLayout.replace('{% block main %}', mainData);
+                    
+                    // Set the layout as the response
+                    res.locals.layout = renderedLayout;
+                    next();
+                });
+            });
+        });
+    });
+});
+
+
+
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');

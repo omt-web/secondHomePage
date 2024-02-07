@@ -1,5 +1,24 @@
 /** 스크롤 넘기기 테스트 css */
-html, body {width: 100%; height: 100%;}
+html, body {
+    width: 100%; height: 100%;
+}
+
 .content{
     height: 100vh;
+}
+
+#content1{
+    background-color: rgb(196, 144, 244);
+}
+
+#content2{
+    background-color: rgb(142, 243, 161);
+}
+
+#content3{
+    background-color: rgb(218, 241, 149);
+}
+
+#content4{
+    background-color: rgb(230, 182, 142);
 }

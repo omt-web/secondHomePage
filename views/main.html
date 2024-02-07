@@ -1,8 +1,22 @@
 <!-- *넌적스 문법의 main -->
-{% indlude "header.html" %}
+{% include "header.html" %}
+
+<link rel="stylesheet" href="/css/style2.css" /> 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/script.js"></script>
+
 <main>
     <h1>메인 파일</h1>
     <p>다른 파일을 include 하는 기능</p>
+
+            <!-- * 스크롤 넘기기 테스트 성공 -->
+            <div>
+                <div class="content" id="content1">1</div>
+                <div class="content" id="content2">2</div>
+                <div class="content" id="content3">3</div>
+                <div class="content" id="content4">4</div>
+            </div>
+
 </main>
 
 {% include "footer.html" %}
