@@ -1,7 +1,8 @@
+<!--! 3000번 포트로 바로 연결된 페이지 -->
+
+<!-- * 넌적스 문법 -->
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<p> 테스트 페이지 index.html </p>
-<p>이 페이지의 제목은 {{title}}</p>
+    {% include 'main.html' %}
 {% endblock %}

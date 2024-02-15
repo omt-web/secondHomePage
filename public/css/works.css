@@ -1,0 +1,129 @@
+/** main.html */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media only screen and (min-width: 390px) {
+    /* 여기에 데스크탑 화면에 대한 스타일을 정의합니다. */
+    body {
+        width: 390px;
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+}
+
+html {
+    padding-top: 68px;
+}
+
+.content{
+    /* height: 100vh; */
+    /* padding-bottom: 25px; */
+    position: relative; /* 내부 요소들을 상대적으로 배치하기 위해 */
+}
+
+#content1{
+    background-color: rgb(196, 144, 244);
+}
+
+#content2{
+    background-color: rgb(142, 243, 161);
+}
+
+#content3{
+    background-color: rgb(218, 241, 149);
+}
+
+#content4{
+    background-color: rgb(230, 182, 142);
+}
+
+/** 섹션 1 */
+#content1{
+    /* height: 100vh; */
+    height: 600px;
+    padding-bottom: 25px;
+    /* position: relative; 내부 요소들을 상대적으로 배치하기 위해 */
+}
+
+#contentImages1 {
+    width: 390px;
+}
+
+/** 섹션 2 */
+#content2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+#contentImages2 {
+    width: 224px;
+}
+
+#contentBox1 {
+    width: 166px;
+    height: 244px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: #4A4A4A;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    display: inline-flex;
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 111.111% */
+}
+
+#contentText1 {
+    text-decoration-line: underline;    
+    margin: 5px;
+}
+
+#contentText2 {
+    margin: 5px;
+}
+
+
+
+#contentImages3 {
+    width: 166px;
+    height: 330px;
+    padding-top: 0px;
+}
+
+#contentBox2 {
+    width: 223px;
+    height: 223px;
+    background-color: #C6DA20;
+    position: relative;
+}
+
+#contentText3 {
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 111.111% */
+    position: absolute;
+    top: 35%;
+    left: 25%;
+}
+
+
+
+.hiddenImg {
+    display: none;
+}
+
+#contentImages4 {
+    width: 223px;
+    opacity: 0.3; 
+    z-index: -1; /* 이미지를 텍스트 아래로 보냄 */
+
+}

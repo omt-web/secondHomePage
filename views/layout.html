@@ -5,21 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=390">
     <link rel="stylesheet" href="/css/style.css" /> 
-    <title>{{title}}</title>
+    <!-- <script src="/js/navTitle.js"></script> -->
+
+    <title id="navTitle">오너먼트 웹 {{title}} </title>
 
 
     <!-- * / 의 위치가 기본 public 폴더로 되어있음 -->
     {% block style %}
     {% endblock %}
-
 </head>
 <body>
-    <header>헤더입니다</header>
-    
-    {% include 'main.html' %}
 
-    <footer>푸터입니다</fㄹ>
-        {% block script %}
-        {% endblock %}
+    <!-- * 라우터에서 각각의 페이지에 맞게 include해면 삽입됨.-->
+    {% block content %}
+
+    {% endblock %}
+
+
+
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

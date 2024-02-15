@@ -1,22 +1,36 @@
 <!-- *넌적스 문법의 main -->
 {% include "header.html" %}
 
-<link rel="stylesheet" href="/css/style2.css" /> 
+<link rel="stylesheet" href="/css/works.css" /> 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/js/script.js"></script>
+<script src="/js/worksToggle.js"></script>
 
-<main>
-    <h1>메인 파일</h1>
-    <p>다른 파일을 include 하는 기능</p>
-
-            <!-- * 스크롤 넘기기 테스트 성공 -->
-            <div>
-                <div class="content" id="content1">1</div>
-                <div class="content" id="content2">2</div>
-                <div class="content" id="content3">3</div>
-                <div class="content" id="content4">4</div>
+<main>  
+    <!-- * 스크롤 섹션별 넘기기 -->
+    <div class="contentMix">
+        <div class="content" id="content1">
+            <img src="/images/works/works1.png" id="contentImages1">
+        </div>
+        <div class="content" id="content2">
+            <img src="/images/works/works2.png" id="contentImages2">
+            <div id="contentBox1">
+                <p id="contentText1">Look more</p>
+                <p id="contentText2">></p>
             </div>
+            <div id="contentBox2">
+                <img src="/images/works/works4.png" id="contentImages4" class="hiddenImg">
 
+                <p id="contentText3">
+                    Let’s start with<br>Archiving Box
+                </p>
+            </div>
+            
+            <img src="/images/works/works3.png" id="contentImages3">
+        </div>
+        <div class="content" id="content3">3</div>
+        <div class="content" id="content4">4</div>
+    </div>
 </main>
 
 {% include "footer.html" %}
