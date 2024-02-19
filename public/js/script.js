@@ -33,7 +33,7 @@ $(document).ready(function() {
       scrolling = true;
 
       // 다음 섹션의 상단으로 이동
-      $('html, body').animate({
+      $('html, content').animate({
           scrollTop: nextSectionTop
       }, 800, function() {
           // 스크롤 중 상태 변경

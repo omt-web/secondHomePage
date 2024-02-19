@@ -7,13 +7,16 @@ const path = require('path');   // html파일 연결시 추가
 const exp = require('constants');
 const nunjucks = require('nunjucks');
 const fs = require('fs');
-
-
-dotenv.config();
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const brandingRouter = require('./routes/branding');
+const { sequelize } = require('./models');
+const Page = require('./models/page');
+const Member = require('./models/member');
 const app = express();
+
+dotenv.config();
+
 app.set('port', process.env.PORT || 3000);
 
 //* nunjucks 이용
@@ -25,11 +28,6 @@ nunjucks.configure('views', {
 
 app.use(
     morgan('dev'),
-    //* 특정 주소의 요청에만 미들웨어가 실행되게
-    // express.static('/', path.join(__dirname, 'public')),
-    // express.json(),
-    // express.urlencoded({ extended: false }),
-    // cookieParser(process.env.COOKIE_SECRET),
 );
 
 //* // 정적 파일 제공을 위한 미들웨어
@@ -54,24 +52,6 @@ app.use(session({
     name: 'session-cookie',
 }));
 
-
-
-// app.use((req, res, next) => {
-//     console.log('모든 요청에서 다 실행됩니다.');
-//     next();
-// });
-
-// app.get('/', (req, res, next) => {
-//     console.log('get / 요청에서만 실행됩니다.');
-//     // res.send('Hello, Express');
-//     // res.sendFile(path.join(__dirname, '/index.html'));
-//     next();
-// }, (req, res) => {
-//     throw new Error('에러는 에러 처리 미들웨어로 갑니다.')
-//     // res.sendFile(path.join(__dirname, '/index.html'));
-
-// });
-
 //* routes 폴더 내 내용 사용
 app.use('/', indexRouter);          //! http://localhost:3000/
 app.use('/user', userRouter);       //! http://localhost:3000/user
@@ -83,20 +63,9 @@ app.use((req, res, next) => {
     
     error.status = 404;
     next(error);
-    // res.status(404).send('Not Found');
 });
 
 app.use(express.static(path.join(__dirname, 'views')));
-
-//* 기존 내용
-// app.use((err, req, res, next) => {
-//     console.error(err);
-//     res.locals.message = err.message;
-//     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-//     res.status(err.status || 500);
-//     res.render('error');
-//     // res.status(500).send(err.message);
-// })
 
 //* header.html, footer.html, main.html을 layout.html에 삽입하는 내용
 app.use((req, res, next) => {
@@ -189,16 +158,29 @@ app.get('/branding', (req, res, next) => {
     });
 });
 
-
 // * main.html 내용이 가져와 질 때에는 해당 title 변수를 Works로 둔다. 
 // '/' 경로에 대한 라우터 설정
 app.get('/', (req, res) => {
     res.render('main.html', { title: 'Works' }); // Works로 초기화
 });
 
-
-
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');
+});
+
+// * mysql 연결
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log('데이터베이스 연결 성공');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+app.use((err, req, res, next) => {
+    res.locals.message = err.message;
+    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
+    res.status(err.status || 500);
+    res.render('error');
 });
 

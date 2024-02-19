@@ -1,13 +1,21 @@
 <!-- *넌적스 문법의 branding.html -->
 {% include "header.html" %}
 
-<link rel="stylesheet" href="/css/style2.css" /> 
+<link rel="stylesheet" href="/css/style.css" /> 
 
 <main>
-    <h1>branding 파일 {{title}}</h1>
-    <p>다른 파일을 include 하는 기능</p>
-    
-
+        <h1>branding.html</h1>
+        <p>다른 파일을 include 하는 기능</p>
+        <h1>Branding Router</h1>
+    <h1>Branding Page</h1>
+    <div>
+        <p>Name: {{ page.name }}</p>
+        <p>Date: {{ page.date }}</p>
+        <p>Participants: {{ page.participants }}</p>
+        <p>version: {{ page.version }}</p>
+        <p>explanation: {{ page.explanation }}</p>
+        <p>heart: {{ page.heart }}</p>
+    </div>
 </main>
 
 {% include "footer.html" %}

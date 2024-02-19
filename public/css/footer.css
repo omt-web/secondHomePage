@@ -1,0 +1,63 @@
+/*! footer.css */
+
+/** 폰트 설정 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+footer {
+    font-family: 'SUIT-Regular', sans-serif;
+    background: #ECECEC;    
+    color: #808080;
+    width: 390px;
+}
+
+.Text {
+    padding: 88px 15px 88px 15px;
+}
+
+.title {
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 800;
+}
+
+#email, #insta {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#instaText {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#emailText {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.mainText3 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.mainText1 {
+    display: grid;
+    grid-template-columns: 50px 55px 255px;
+    grid-template-rows: 30px;
+}
+
+.mainText2 {
+    display: grid;
+    grid-template-columns: 85px 20px 225px;
+    grid-template-rows: 30px;
+    margin: 2px 2px 40px 2px;
+}
