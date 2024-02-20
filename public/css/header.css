@@ -68,7 +68,7 @@
     display: none;
     position: absolute;
     background-color: #ffffff;
-    min-width: 390px;
+    min-width: 310px;
     top: 100%; /* 드롭다운 메뉴가 부모 요소 아래에 위치하도록 설정 */
     right: 0; /* 오른쪽 정렬 */
     z-index: 100; /* 다른 요소 위에 표시되도록 설정 */
@@ -79,5 +79,5 @@
 
 /* 드롭다운 내용 호버 스타일 */
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #FFFFFF;
 }

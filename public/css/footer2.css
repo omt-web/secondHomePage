@@ -1,0 +1,49 @@
+/* * footer2.html의 css */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div {
+    font-family: 'SUIT-Regular', sans-serif;
+}
+
+hr {
+    width : 355px;
+    height : 2px;
+    background-color : #000000;
+    margin-top: 40px;
+}
+
+.next {
+    color: #000;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 10px 17.5px;
+}
+
+a {
+    text-decoration: none;
+    color: #ABABAB;
+
+}
+
+.contentsList {
+    padding: 30px 0px;
+    margin:20px 0px;
+}
+
+.nextContents {
+
+    padding: 30px 17.5px 30px 17.5px;
+
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
