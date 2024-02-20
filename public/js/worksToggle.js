@@ -16,6 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
         var img = document.getElementById('contentImages11');
         img.classList.toggle('hiddenImg');
     });
+
+    // contentImages11 클릭 시 이미지 토글
+    document.getElementById('contentBox10').addEventListener('click', function() {
+        var img = document.getElementById('contentImages14');
+        img.classList.toggle('hiddenImg');
+    });
+
+        // contentImages11 클릭 시 이미지 토글
+    document.getElementById('contentBox12').addEventListener('click', function() {
+        var img = document.getElementById('contentImages17');
+        img.classList.toggle('hiddenImg');
+    });
+    
 });
 
 
