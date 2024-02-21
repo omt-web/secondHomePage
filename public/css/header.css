@@ -12,7 +12,7 @@
 .nav {
     position: fixed; /* 페이지 상단에 고정 */
     top: 0; /* 페이지 상단에 배치 */
-    width: 100%; /* 화면 전체 너비로 확장 */
+    width: 390px; /* 화면 전체 너비로 확장 */
     z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
     background-color: #ffffff; /* 배경색 지정 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
