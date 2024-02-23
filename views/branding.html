@@ -1,22 +1,28 @@
 <!-- *넌적스 문법의 branding.html -->
 {% include "header.html" %}
 <link rel="stylesheet" href="/css/style.css" /> 
+<link rel="stylesheet" href="/css/intro2.css" /> 
 
 
 {% include "brandingIntro.html" %}
 
 <main>
-        <!-- <h1>branding.html</h1> -->
-  
-    <!-- <h1>Branding Page</h1> -->
-    <div>
-        <p id="name">{{ page.name }}</p>
-        <p id="version">{{ page.version }}</p>
-        <p id="date">Date. {{ page.date }}</p>
-        <p id="participants">Participants. {{ page.participants }}</p>
 
-        <p>{{ page.explanation }}</p>
-        <p>heart: {{ page.heart }}</p>
+    <div class="imgContainer">
+        <img src="/images/Branding/details/1.jpg" alt="img1" id="img1">
+        <img src="/images/Branding/details/2.jpg" alt="img2" id="img2">
+        <img src="/images/Branding/details/3.jpg" alt="img3" id="img4">
+        <img src="/images/Branding/details/4.jpg" alt="img4" id="img4">
+        <img src="/images/Branding/details/5.jpg" alt="img5" id="img5">
+        <img src="/images/Branding/details/6.jpg" alt="img6" id="img6">
+        <img src="/images/Branding/details/7.jpg" alt="img7" id="img7">
+        <img src="/images/Branding/details/8.jpg" alt="img8" id="img8">
+        <img src="/images/Branding/details/9.jpg" alt="img9" id="img9">
+
+    </div>
+    <div class="heart">
+        <img src="/images/heart.png" alt="heart img" id="heartImg">
+        <p id="heartNumber">{{ page.heart }}</p>
     </div>
 </main>
 

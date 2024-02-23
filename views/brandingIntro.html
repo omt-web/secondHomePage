@@ -6,18 +6,21 @@
     <div class="container">
         <div class="first-screen">
             <div class="textContainer1">
-                <br><br><br><br><br>
                 <p id="name">{{ page.name }}</p>
                 <p id="version">{{ page.version }}</p>
-                <p id="date">Date. {{ page.date }}</p>
-                <p id="participants">Participants. {{ page.participants }}</p>
+                <div id="date">
+                    <p id="date1">Date.</p>
+                    <p id="date2">{{ page.date }}</p>
+                </div>
+                <div id="participants">
+                    <p id="participants1">Participants.</p>
+                    <p id="participants2">{{ page.participants }}</p>
+                </div>
             </div>
             <img src="/images/Branding/Branding1.jpg" alt="Background Image 1" id="background1">
         </div>
         <div class="second-screen">
             <div class="textContainer2">
-                <br><br><br><br><br>
-                <br><br><br><br><br>
                 <p id="page">Branding</p>
                 <p id="explanation">{{ page.explanation }}</p>
             </div>

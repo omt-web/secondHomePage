@@ -42,6 +42,7 @@
 }
 
 .textContainer1{
+    margin: 15px;
     opacity: 1;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* visibility 속성에도 트랜지션을 추가 */
 }
@@ -49,19 +50,86 @@
 .textContainer1.hidden {
     visibility: hidden; /* 요소를 화면에서 숨김 */
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* visibility 속성에도 트랜지션을 추가 */
-
     opacity: 0;
 }
 
- .textContainer2 {
-    z-index: 10;
+.textContainer2 {
+    margin: 15px;
+    z-index: 1;
     opacity: 0; /* 처음에는 투명도를 0으로 설정 */
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* visibility 속성에도 트랜지션을 추가 */
 }
 
- .textContainer2.hidden {
+.textContainer2.hidden {
     opacity: 1; /* 투명도를 1로 설정하여 텍스트 컨테이너가 보이도록 함 */
     visibility: visible; /* 요소를 화면에 표시 */
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* visibility 속성에도 트랜지션을 추가 */
-
 }
+
+/** 화면 날짜 참여자 제목 등 고정 스타일 요소 */
+#name {
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 125% */
+    margin-top: 95px;
+    padding: 0px;
+}
+
+#version {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 88.889% */
+    margin-top: 16px;
+    padding: 0px;
+}
+
+#date, #participants {
+    display: grid;
+    grid-template-columns: 120px 250px ;
+    height: auto;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+}
+
+#date {
+    margin-top: 430px;
+    padding: 0px;
+}
+
+#date1, #participants1 {
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px;
+}
+
+#date2, #participants2 {
+    font-weight: 500;
+    margin: 5px 0px;
+    padding: 0px;
+}
+
+#page {
+    margin-top: 400px;
+    padding: 0px;
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 125% */
+}
+
+#explanation {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
