@@ -2,23 +2,23 @@
 {% include "header.html" %}
 <link rel="stylesheet" href="/css/style.css" /> 
 
+
 {% include "brandingIntro.html" %}
 
 <main>
-        <h1>branding.html</h1>
-        <p>다른 파일을 include 하는 기능</p>
-        <h1>Branding Router</h1>
-    <h1>Branding Page</h1>
+        <!-- <h1>branding.html</h1> -->
+  
+    <!-- <h1>Branding Page</h1> -->
     <div>
-        <p>Name: {{ page.name }}</p>
-        <p>Date: {{ page.date }}</p>
-        <p>Participants: {{ page.participants }}</p>
-        <p>version: {{ page.version }}</p>
-        <p>explanation: {{ page.explanation }}</p>
+        <p id="name">{{ page.name }}</p>
+        <p id="version">{{ page.version }}</p>
+        <p id="date">Date. {{ page.date }}</p>
+        <p id="participants">Participants. {{ page.participants }}</p>
+
+        <p>{{ page.explanation }}</p>
         <p>heart: {{ page.heart }}</p>
     </div>
 </main>
 
 {% include "footer2.html" %}
-
 {% include "footer.html" %}

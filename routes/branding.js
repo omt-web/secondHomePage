@@ -7,7 +7,7 @@ router.route('/')
     // * 일부 내용만 추출해 brandingRouter.html파일로 연결
 .get(async (req, res, next) => {
     try {
-        const pages = await Page.findAll({ where: { id: 2 } });
+        const pages = await Page.findAll({ where: { id: 1 } });
         const page = pages[0]; 
         res.render('brandingRouter', { page });
     } catch (err) {

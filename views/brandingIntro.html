@@ -1,35 +1,32 @@
 <!--! 스크롤 확대 -->
 <body>
 <link rel="stylesheet" href="/css/brandingIntro.css" /> 
-<!-- <link rel="stylesheet" href="/css/style.css" />  -->
 
-
-<!-- ! 이미지 확대, 축소 테스트 성공1 -->
-    <!-- <div class="container">
-      <img id="image" src="/images/Branding/Branding1.jpg" alt="Image">
-      <button id="zoomIn">Zoom In</button>
-      <button id="zoomOut">Zoom Out</button>
-    </div> -->
-
+    <!-- ! 이미지 확대, 축소 테스트 2 되긴 하는데 뭔가 이상 -->
     <div class="container">
         <div class="first-screen">
-            <h1 id="text1">omt</h1>
+            <div class="textContainer1">
+                <br><br><br><br><br>
+                <p id="name">{{ page.name }}</p>
+                <p id="version">{{ page.version }}</p>
+                <p id="date">Date. {{ page.date }}</p>
+                <p id="participants">Participants. {{ page.participants }}</p>
+            </div>
             <img src="/images/Branding/Branding1.jpg" alt="Background Image 1" id="background1">
-            <img src="image2.jpg" alt="Image 2" id="image2">
         </div>
         <div class="second-screen">
-            <h1 id="text2">branding</h1>
-            <h1 id="text2">branding</h1>
-            <h1 id="text2">branding</h1>
-            <h1 id="text2">branding</h1>
+            <div class="textContainer2">
+                <br><br><br><br><br>
+                <br><br><br><br><br>
+                <p id="page">Branding</p>
+                <p id="explanation">{{ page.explanation }}</p>
+            </div>
             <img src="/images/Branding/Branding3.png" alt="Background Image 2" id="background2">
-            <!-- Add more images here -->
         </div>
     </div>
-    <button id="scrollButton">Scroll Down</button>
-
-
+    <button id="scrollButton">
+        <img src="/images/header/nav.png" id="buttonPng" alt="Scroll Down">
+    </button>
 
     <script  src="/js/zoomImage.js"></script>
-
 </body>
