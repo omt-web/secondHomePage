@@ -1,13 +1,13 @@
 <!-- *넌적스 문법의 branding.html -->
+{% block content %}
+
 {% include "header.html" %}
 <link rel="stylesheet" href="/css/style.css" /> 
 <link rel="stylesheet" href="/css/intro2.css" /> 
 
-
 {% include "brandingIntro.html" %}
 
 <main>
-
     <div class="imgContainer">
         <img src="/images/Branding/details/1.jpg" alt="img1" id="img1">
         <img src="/images/Branding/details/2.jpg" alt="img2" id="img2">
@@ -18,7 +18,6 @@
         <img src="/images/Branding/details/7.jpg" alt="img7" id="img7">
         <img src="/images/Branding/details/8.jpg" alt="img8" id="img8">
         <img src="/images/Branding/details/9.jpg" alt="img9" id="img9">
-
     </div>
     <div class="heart">
         <img src="/images/heart.png" alt="heart img" id="heartImg">
@@ -28,3 +27,4 @@
 
 {% include "footer2.html" %}
 {% include "footer.html" %}
+{% endblock %}

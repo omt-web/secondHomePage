@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs').promises;
+
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -6,13 +8,13 @@ const dotenv = require('dotenv');
 const path = require('path');   // html파일 연결시 추가
 const exp = require('constants');
 const nunjucks = require('nunjucks');
-const fs = require('fs');
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const brandingRouter = require('./routes/branding');
 const { sequelize } = require('./models');
 const Page = require('./models/page');
 const Member = require('./models/member');
+
 const app = express();
 
 dotenv.config();
@@ -68,94 +70,61 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'views')));
 
 //* header.html, footer.html, main.html을 layout.html에 삽입하는 내용
-app.use((req, res, next) => {
-    // Reading header.html
-    fs.readFile('views/header', 'utf8', (err, headerData) => {
-        if (err) {
-            console.error("Error reading header file:", err);
-            return next(err);
-        }
-        
+app.use(async (req, res, next) => {
+    try {
+        // Reading header.html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
         // Reading footer.html
-        fs.readFile('views/footer.html', 'utf8', (err, footerData) => {
-            if (err) {
-                console.error("Error reading footer file:", err);
-                return next(err);
-            }
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        // Reading main.html
+        const mainData = await fs.readFile('views/main.html', 'utf8');
+        // Reading layout.html
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
 
-            // Reading main.html
-            fs.readFile('views/main.html', 'utf8', (err, mainData) => {
-                if (err) {
-                    console.error("Error reading main file:", err);
-                    return next(err);
-                }
+        let renderedLayout = layoutData.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block main %}', mainData);
 
-                // Reading layout.html
-                fs.readFile('views/layout.html', 'utf8', (err, layoutData) => {
-                    if (err) {
-                        console.error("Error reading layout file:", err);
-                        return next(err);
-                    }
-
-                    // Replace '{% block header %}' with the contents of header.html
-                    let renderedLayout = layoutData.replace('{% block header %}', headerData);
-                    // Replace '{% block footer %}' with the contents of footer.html
-                    renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
-                    // Replace '{% block main %}' with the contents of main.html
-                    renderedLayout = renderedLayout.replace('{% block main %}', mainData);
-                    
-                    // Set the layout as the response
-                    res.locals.layout = renderedLayout;
-                    next();
-                });
-            });
-        });
-    });
+        // Set the layout as the response
+        res.locals.layout = renderedLayout;
+        next();
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
 });
 
-//* '/branding' 경로에 대한 라우터 설정
-app.get('/branding', (req, res, next) => {
-    // Reading header.html
-    fs.readFile('views/header.html', 'utf8', (err, headerData) => {
-        if (err) {
-            console.error("Error reading header file:", err);
-            return next(err);
-        }
 
+//* '/branding' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/branding', async (req, res, next) => {
+    try {
+        // Reading header.html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        // Reading brandingIntro.html
+        const brandingIntroData = await fs.readFile('views/brandingIntro.html', 'utf8');
         // Reading footer.html
-        fs.readFile('views/footer.html', 'utf8', (err, footerData) => {
-            if (err) {
-                console.error("Error reading footer file:", err);
-                return next(err);
-            }
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        // Reading 2.html
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        // Reading branding.html
+        const brandingData = await fs.readFile('views/branding.html', 'utf8');
+        // Reading layout.html
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
 
-            // Reading branding.html
-            fs.readFile('views/branding.html', 'utf8', (err, brandingData) => {
-                if (err) {
-                    console.error("Error reading branding file:", err);
-                    return next(err);
-                }
 
-                // Reading layout.html
-                fs.readFile('views/layout.html', 'utf8', (err, layoutData) => {
-                    if (err) {
-                        console.error("Error reading layout file:", err);
-                        return next(err);
-                    }
+        let renderedLayout = layoutData.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block brandingIntroData %}', brandingIntroData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block main %}', brandingData);
+    
 
-                    // Replace '{% block header %}' with the contents of header.html
-                    let renderedLayout = layoutData.replace('{% block header %}', headerData);
-                    // Replace '{% block footer %}' with the contents of footer.html
-                    renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
-                    // Replace '{% block main %}' with the contents of branding.html
-                    renderedLayout = renderedLayout.replace('{% block main %}', brandingData);
-                    
-                    // Set the layout as the response
-                    res.send(renderedLayout);
-                });
-            });
-        });
-    });
+        // Set the layout as the response
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
 });
 
 // * main.html 내용이 가져와 질 때에는 해당 title 변수를 Works로 둔다. 
