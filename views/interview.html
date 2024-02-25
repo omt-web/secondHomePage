@@ -1,0 +1,126 @@
+<!-- *넌적스 문법의 branding.html -->
+{% block content %}
+
+{% include "header.html" %}
+<header>
+    <link rel="stylesheet" href="/css/style.css" /> 
+    <link rel="stylesheet" href="/css/intro2.css" /> 
+    <link rel="stylesheet" href="/css/interview.css" /> 
+    <script src="/js/interviewToggle.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</header>
+
+<body>
+
+<main>
+    <p id="interviewTitle">Members Interview</p>
+
+    <div>
+        <hr>
+<div class="container">
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
+                    <div class="col-xs-10">
+                        <p id="testbarName"> {{ member1.name }}</p>
+                        <p id="responsibility"> {{ member1.responsibility }}</p>
+                        <img src="/images/header/nav.png" id="buttonPng">
+                    </div>
+                    <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                </div>
+                <div id="detail-1">
+                    <div class="container">
+                        <p id="questionA"> {{ member1.questionA }}</p>
+                        <p id="answerA"> {{ member1.answerA }}</p>
+                        <p> {{ member1.questionB }}</p>
+                        <p> {{ member1.answerB }}</p>
+                        <p> {{ member1.questionC }}</p>
+                        <p> {{ member1.answerC }}</p>
+                        <p> {{ member1.questionD }}</p>
+                        <p> {{ member1.answerD }}</p>
+                    </div>
+                </div>
+            </li>            
+            <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-2" data-toggle="detail-2">
+                            <div class="col-xs-10">
+                                <p id="testbarName"> {{ member1.name }}</p>
+                                <p id="responsibility"> {{ member1.responsibility }}</p>
+                                <img src="/images/header/nav.png" id="buttonPng">                            
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-2">
+                            <div class="container">
+                                <p id="questionA"> {{ member2.questionA }}</p>
+                                <p id="answerA"> {{ member2.answerA }}</p>
+                                <p> {{ member2.questionB }}</p>
+                                <p> {{ member2.answerB }}</p>
+                                <p> {{ member2.questionC }}</p>
+                                <p> {{ member2.answerC }}</p>
+                                <p> {{ member2.questionD }}</p>
+                                <p> {{ member2.answerD }}</p>
+                            </div>    
+                        </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-3" data-toggle="detail-3">
+                            <div class="col-xs-10">
+                                Item 3
+                            </div>
+                            <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-3">
+                            <hr></hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    <div class="col-xs-1">
+                                        Detail:
+                                    </div>
+                                    <div class="col-xs-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="col-xs-1">
+                                        Detail:
+                                    </div>
+                                    <div class="col-xs-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="col-xs-1">
+                                        Detail:
+                                    </div>
+                                    <div class="col-xs-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="col-xs-1">
+                                        Detail:
+                                    </div>
+                                    <div class="col-xs-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+   
+
+
+</main>
+</body>
+
+
+{% include "footer2.html" %}
+{% include "footer.html" %}
+{% endblock %}

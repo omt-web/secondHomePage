@@ -9,7 +9,7 @@ router.route('/')
     res.locals.title = 'Leaflet';
 
     try {
-        const page = await Page.findAll({ where: { id: 2 } });
+        const page = await Page.findAll({ where: { id: 2 }});
         const modifiedPages = page.map(page => {
             return {
                 ...page._doc,

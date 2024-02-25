@@ -16,6 +16,7 @@ const leafletRouter = require('./routes/leaflet');
 const measurementRouter = require('./routes/measurement');
 const homesweethomeRouter = require('./routes/homesweethome');
 const booksRouter = require('./routes/books');
+const interviewRouter = require('./routes/interview');
 const { sequelize } = require('./models');
 const Page = require('./models/page');
 const Member = require('./models/member');
@@ -68,6 +69,7 @@ app.use('/leaflet', leafletRouter);       //! http://localhost:3000/leaflet
 app.use('/measurement', measurementRouter);       //! http://localhost:3000/measurement
 app.use('/homesweethome', homesweethomeRouter);       //! http://localhost:3000/homesweethome
 app.use('/books', booksRouter);       //! http://localhost:3000/books
+app.use('/interview', interviewRouter);       //! http://localhost:3000/interview
 
 //* 404
 app.use((req, res, next) => {
@@ -254,6 +256,30 @@ app.get('/books', async (req, res, next) => {
         next(err);
     }
 });
+
+//* '/interview' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/interview', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const interviewData = await fs.readFile('views/interview.html', 'utf8');
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block interview %}', interviewData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
+});
+
 
 
 
