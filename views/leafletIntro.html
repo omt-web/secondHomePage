@@ -1,7 +1,8 @@
 <!--! 스크롤 확대 -->
 <body>
-<link rel="stylesheet" href="/css/brandingIntro.css" /> 
-
+    {% for page in page %}
+    <link rel="stylesheet" href="/css/brandingIntro.css" /> 
+    
     <div class="container">
         <div class="first-screen">
             <div class="textContainer1">
@@ -13,22 +14,26 @@
                 </div>
                 <div id="participants">
                     <p id="participants1">Participants.</p>
+                    {% for page in modifiedPages %}
                     <p id="participants2">{{ page.participants }}</p>
+                    {% endfor %}
                 </div>
             </div>
-            <img src="/images/Branding/Branding1.jpg" alt="Background Image 1" id="background1">
+            <img src="/images/Leaflet/Leaflet1.jpg" alt="Background Image 1" id="background1">
         </div>
         <div class="second-screen">
             <div class="textContainer2">
-                <p id="page">Branding</p>
+                <p id="page">Leaflet</p>
                 <p id="explanation">{{ page.explanation }}</p>
             </div>
-            <img src="/images/Branding/Branding3.png" alt="Background Image 2" id="background2">
+            <img src="/images/Leaflet/Leaflet3.png" alt="Background Image 2" id="background2">
         </div>
     </div>
     <button id="scrollButton">
         <img src="/images/header/nav.png" id="buttonPng" alt="Scroll Down">
     </button>
-
+    
     <script  src="/js/zoomImage.js"></script>
+    {% endfor %}
 </body>
+

@@ -20,13 +20,16 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
     transition: transform 0.5s ease;
     transform: translateY(0%);
+}
+#background1 {
+    z-index: -3;
 }
 
 #background2 {
     top: 300px;
+    z-index: -1;
 }
 
 #scrollButton {
@@ -55,7 +58,7 @@
 
 .textContainer2 {
     margin: 15px;
-    z-index: 1;
+    z-index: 5;
     opacity: 0; /* 처음에는 투명도를 0으로 설정 */
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* visibility 속성에도 트랜지션을 추가 */
 }
@@ -112,6 +115,7 @@
     font-weight: 500;
     margin: 5px 0px;
     padding: 0px;
+    white-space: pre-line;
 }
 
 #page {
@@ -131,5 +135,3 @@
     font-weight: 500;
     line-height: normal;
 }
-
-

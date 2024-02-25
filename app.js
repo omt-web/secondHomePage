@@ -11,6 +11,11 @@ const nunjucks = require('nunjucks');
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const brandingRouter = require('./routes/branding');
+const archivingBoxRouter = require('./routes/archivingBox');
+const leafletRouter = require('./routes/leaflet');
+const measurementRouter = require('./routes/measurement');
+const homesweethomeRouter = require('./routes/homesweethome');
+const booksRouter = require('./routes/books');
 const { sequelize } = require('./models');
 const Page = require('./models/page');
 const Member = require('./models/member');
@@ -58,6 +63,11 @@ app.use(session({
 app.use('/', indexRouter);          //! http://localhost:3000/
 app.use('/user', userRouter);       //! http://localhost:3000/user
 app.use('/branding', brandingRouter);       //! http://localhost:3000/branding
+app.use('/archivingBox', archivingBoxRouter);       //! http://localhost:3000/archivingBox
+app.use('/leaflet', leafletRouter);       //! http://localhost:3000/leaflet
+app.use('/measurement', measurementRouter);       //! http://localhost:3000/measurement
+app.use('/homesweethome', homesweethomeRouter);       //! http://localhost:3000/homesweethome
+app.use('/books', booksRouter);       //! http://localhost:3000/books
 
 //* 404
 app.use((req, res, next) => {
@@ -72,16 +82,14 @@ app.use(express.static(path.join(__dirname, 'views')));
 //* header.html, footer.html, main.html을 layout.html에 삽입하는 내용
 app.use(async (req, res, next) => {
     try {
-        // Reading header.html
+        // Reading html
         const headerData = await fs.readFile('views/header.html', 'utf8');
-        // Reading footer.html
         const footerData = await fs.readFile('views/footer.html', 'utf8');
-        // Reading main.html
         const mainData = await fs.readFile('views/main.html', 'utf8');
-        // Reading layout.html
         const layoutData = await fs.readFile('views/layout.html', 'utf8');
 
-        let renderedLayout = layoutData.replace('{% block header %}', headerData);
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
         renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
         renderedLayout = renderedLayout.replace('{% block main %}', mainData);
 
@@ -98,28 +106,21 @@ app.use(async (req, res, next) => {
 //* '/branding' 경로에 대한 라우터 설정 - 비동기 처리
 app.get('/branding', async (req, res, next) => {
     try {
-        // Reading header.html
+        // Reading html
         const headerData = await fs.readFile('views/header.html', 'utf8');
-        // Reading brandingIntro.html
         const brandingIntroData = await fs.readFile('views/brandingIntro.html', 'utf8');
-        // Reading footer.html
         const footerData = await fs.readFile('views/footer.html', 'utf8');
-        // Reading 2.html
         const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
-        // Reading branding.html
         const brandingData = await fs.readFile('views/branding.html', 'utf8');
-        // Reading layout.html
         const layoutData = await fs.readFile('views/layout.html', 'utf8');
 
-
-        let renderedLayout = layoutData.replace('{% block header %}', headerData);
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
         renderedLayout = renderedLayout.replace('{% block brandingIntroData %}', brandingIntroData);
         renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
         renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
         renderedLayout = renderedLayout.replace('{% block main %}', brandingData);
-    
 
-        // Set the layout as the response
         res.send(renderedLayout);
     } catch (err) {
         console.error("Error reading file:", err);
@@ -127,11 +128,134 @@ app.get('/branding', async (req, res, next) => {
     }
 });
 
-// * main.html 내용이 가져와 질 때에는 해당 title 변수를 Works로 둔다. 
-// '/' 경로에 대한 라우터 설정
-app.get('/', (req, res) => {
-    res.render('main.html', { title: 'Works' }); // Works로 초기화
+//* '/archivingBox' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/archivingBox', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const archivingBoxIntroData = await fs.readFile('views/archivingBoxIntro.html', 'utf8');
+        const archivingBoxData = await fs.readFile('views/archivingBox.html', 'utf8');
+
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block archivingBox %}', archivingBoxData);
+        renderedLayout = renderedLayout.replace('{% block archivingBoxIntro %}', archivingBoxIntroData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
 });
+
+//* '/leaflet' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/leaflet', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const leafletIntroData = await fs.readFile('views/leafletIntro.html', 'utf8');
+        const leafletData = await fs.readFile('views/leaflet.html', 'utf8');
+
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block reaflet %}', leafletData);
+        renderedLayout = renderedLayout.replace('{% block reafletIntro %}', leafletIntroData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
+});
+
+//* '/measurement' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/measurement', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const measurementIntroData = await fs.readFile('views/measurementIntro.html', 'utf8');
+        const measurementData = await fs.readFile('views/measurement.html', 'utf8');
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block measurement %}', measurementData);
+        renderedLayout = renderedLayout.replace('{% block measurementIntro %}', measurementIntroData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
+});
+
+//* '/homesweethome' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/homesweethome', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const homesweethomeIntroData = await fs.readFile('views/homesweethomeIntro.html', 'utf8');
+        const homesweethomeData = await fs.readFile('views/homesweethome.html', 'utf8');
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block homesweethome %}', homesweethomeData);
+        renderedLayout = renderedLayout.replace('{% block homesweethomeIntro %}', homesweethomeIntroData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
+});
+
+//* '/books' 경로에 대한 라우터 설정 - 비동기 처리
+app.get('/books', async (req, res, next) => {
+    try {
+        // Reading html
+        const headerData = await fs.readFile('views/header.html', 'utf8');
+        const footerData = await fs.readFile('views/footer.html', 'utf8');
+        const footer2Data = await fs.readFile('views/footer2.html', 'utf8');
+        const layoutData = await fs.readFile('views/layout.html', 'utf8');
+        const booksIntroData = await fs.readFile('views/booksIntro.html', 'utf8');
+        const bookseData = await fs.readFile('views/books.html', 'utf8');
+
+        let renderedLayout = layoutData.replace('{% block layout %}', layoutData);
+        renderedLayout = renderedLayout.replace('{% block header %}', headerData);
+        renderedLayout = renderedLayout.replace('{% block footer %}', footerData);
+        renderedLayout = renderedLayout.replace('{% block footer2Data %}', footer2Data);
+        renderedLayout = renderedLayout.replace('{% block books %}', bookseData);
+        renderedLayout = renderedLayout.replace('{% block booksIntro %}', booksIntroData);
+
+        res.send(renderedLayout);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        next(err);
+    }
+});
+
+
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');

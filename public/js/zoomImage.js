@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
     }
 
     // *텍스트 확대 축소
-    if (scrollPosition >= firstScreenHeight - windowHeight + 5) {
+    if (scrollPosition >= firstScreenHeight - windowHeight + 4) {
         // * 스크롤 아래로
         textContainer1.classList.add('hidden');
         textContainer2.classList.add('hidden');
