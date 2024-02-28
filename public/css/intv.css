@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'SUIT-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#Accordion_wrap {
+  background: linear-gradient(to top, #2F9BDE, transparent);
+}
+
+.intvMem {
+  margin: 150px 0px 20px 15px;
+  color: #000000;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px; 
+}
+  
+.que:first-child{
+    border-top: 1px solid black;
+    margin: 0px 15px;
+  }
+  
+.que{
+  margin: 0px 15px;
+  position: relative;
+  cursor: pointer;
+  border-top: 1px solid black;
+}
+
+#profileBox {
+  margin: 0px 15px;
+  display: inline-block;
+  height: 95px;
+}
+
+#testbarName, #responsibility {
+  display: inline-block;
+  height: 20px;
+  margin: 37.5px 0px;
+}
+
+#testbarName {
+  color: #000000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 88.889% */
+  margin-right: 15px;
+}
+
+#responsibility {
+  color: #B1B1B1;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 16px; /* 133.333% */
+}
+
+
+  
+.que::before{
+  color: #000000;
+}
+
+.que.on>span{ /* 클릭 전 */
+  
+}
+  
+.anw { /* 내부 내용 */
+  display: none;
+  overflow: hidden;
+  margin: 30px 25px;
+}
+  
+.anw::before {
+  display: inline-block;
+}
+
+#questionA, #questionB, #questionC, #questionD {
+  color: #000000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+}
+
+#answerA, #answerB, #answerC, #answerD {
+  color: #000000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+
+.arrow-wrap {
+  position: absolute;
+  top:50%; right: 10px;
+  transform: translate(0, -50%);
+}
+
+.que .arrow-top {
+  display: none;
+}
+.que .arrow-bottom {
+  display: block;
+}
+.que.on .arrow-bottom {
+  display: none;
+}
+.que.on .arrow-top {
+  display: block; 
+}
