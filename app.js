@@ -156,6 +156,11 @@ app.get('/archivingBox', async (req, res, next) => {
     }
 });
 
+
+
+
+
+
 //* '/leaflet' 경로에 대한 라우터 설정 - 비동기 처리
 app.get('/leaflet', async (req, res, next) => {
     try {
@@ -280,9 +285,6 @@ app.get('/interview', async (req, res, next) => {
     }
 });
 
-
-
-
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');
 });
@@ -302,4 +304,3 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error');
 });
-

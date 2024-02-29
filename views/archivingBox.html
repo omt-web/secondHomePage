@@ -23,9 +23,29 @@
         <img src="/images/ArchivingBox/details/11.jpg" alt="img9" id="img11">
     </div>
     <div class="heart">
-        <img src="/images/heart.png" alt="heart img" id="heartImg">
+        <button onclick="likePage(6)" id="heartButton">
+            <img src="/images/heart.png" alt="heart img" id="heartImg" >
+        </button>
         <p id="heartNumber">{{ page.heart }}</p>
     </div>
+
+    <script>
+    function likePage(pageId) {     
+            fetch('/archivingBox', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pageId: pageId })
+            })
+            
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                location.reload(); // 페이지 새로고침
+            });
+        }        
+    </script>
 </main>
 
 {% include "footer2.html" %}
