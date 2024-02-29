@@ -41,4 +41,6 @@
 }
 
 #heartButton {
+    border-style: none;
+    background-color: #00000000;
 }

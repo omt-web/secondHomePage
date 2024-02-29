@@ -20,11 +20,33 @@
         <img src="/images/Leaflet/details/9.jpg" alt="img9" id="img9">
     </div>
     <div class="heart">
-        <img src="/images/heart.png" alt="heart img" id="heartImg">
+        <button onclick="likePage(2)" id="heartButton">
+            <img src="/images/heart.png" alt="heart img" id="heartImg" onclick="reloadPage()" >
+        </button>
         {% for page in page %}
-        <p id="heartNumber">{{ page.heart }}</p>
+            <p id="heartNumber">{{ page.heart }}</p>
         {% endfor %}    
     </div>
+
+    <script>
+        function likePage(pageId) {         //* 하트 증가
+            fetch('/leaflet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pageId: pageId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+        }        
+        
+        function reloadPage() {           // 페이지 새로고침
+            window.location.reload();
+        }
+    </script>
 </main>
 
 {% include "footer2.html" %}

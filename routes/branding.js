@@ -17,6 +17,23 @@ router.route('/')
         console.error(err);
         next(err);
     }
-});
+    });
+
+    router.post('/', async (req, res) => {
+        const pageId = req.body.pageId; // 페이지 ID를 요청에서 가져옴
+    
+        try {
+            const page = await Page.findByPk(pageId);
+            if (!page) {
+                res.status(404).send('Page not found');
+                return;
+            }
+            page.heart += 1;
+            await page.save();
+            console.log('Heart count updated successfully');
+        } catch (err) {
+            console.error('Error updating heart count: ' + err.stack);
+        }
+    });
 
 module.exports = router;
