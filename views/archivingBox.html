@@ -24,28 +24,33 @@
     </div>
     <div class="heart">
         <button onclick="likePage(6)" id="heartButton">
-            <img src="/images/heart.png" alt="heart img" id="heartImg" >
+            <img src="/images/heart.png" alt="heart img" id="heartImg" onclick="reloadPage()" >
         </button>
         <p id="heartNumber">{{ page.heart }}</p>
     </div>
 
     <script>
-    function likePage(pageId) {     
+        function likePage(pageId) {         //* 하트 증가
             fetch('/archivingBox', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ pageId: pageId })
+                
             })
             
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                location.reload(); // 페이지 새로고침
             });
         }        
+        
+        function reloadPage() {           // 페이지 새로고침
+            window.location.reload();
+        }
     </script>
+    
 </main>
 
 {% include "footer2.html" %}
