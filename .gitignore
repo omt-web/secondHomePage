@@ -1,2 +1,5 @@
 ## 폴더 제외
 node_modules/
+
+## 파일 제외
+.env

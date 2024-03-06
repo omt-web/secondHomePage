@@ -49,7 +49,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //* express-session 미들웨어 사용
-app.use(session({
+// app.use(session({
+//     resave: false,
+//     saveUninitialized: false,
+//     secret: process.env.COOKIE_SECRET,
+//     cookie: {
+//         httpOnly: true,
+//         secure: false,
+//     },
+//     name: 'session-cookie',
+// }));
+
+const sessionOption = {
     resave: false,
     saveUninitialized: false,
     secret: process.env.COOKIE_SECRET,
@@ -58,7 +69,13 @@ app.use(session({
         secure: false,
     },
     name: 'session-cookie',
-}));
+};
+
+if (process.env.NODE_ENV === 'production') {
+    sessionOption.proxy = true;
+}
+
+app.use(session(sessionOption));
 
 //* routes 폴더 내 내용 사용
 app.use('/', indexRouter);          //! http://localhost:3000/
@@ -155,11 +172,6 @@ app.get('/archivingBox', async (req, res, next) => {
         next(err);
     }
 });
-
-
-
-
-
 
 //* '/leaflet' 경로에 대한 라우터 설정 - 비동기 처리
 app.get('/leaflet', async (req, res, next) => {
@@ -298,9 +310,15 @@ sequelize.sync({ force: false })
         console.log(err);
     });
 
-app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
+    if (process.env.NODE_ENV === 'production') {
+        app.use(morgan('combined'));
+    } else {
+        app.use(morgan('dev'));
+    }
+
+    app.use((err, req, res, next) => {
+        res.locals.message = err.message;
+        res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
+        res.status(err.status || 500);
+        res.render('error');
 });
