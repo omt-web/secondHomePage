@@ -18,7 +18,6 @@ router.route('/')
         });
         res.render('homesweethomeRouter', { page, modifiedPages });
 
-        //   res.json({ modifiedPages, pages });
         } catch (err) {
         console.error(err);
         next(err);
@@ -41,4 +40,5 @@ router.post('/', async (req, res) => {
         console.error('Error updating heart count: ' + err.stack);
     }
 });
+
 module.exports = router;

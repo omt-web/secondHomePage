@@ -18,6 +18,7 @@ const homesweethomeRouter = require('./routes/homesweethome');
 const booksRouter = require('./routes/books');
 const interviewRouter = require('./routes/interview');
 const { sequelize } = require('./models');
+const logger = require('./logger');
 const Page = require('./models/page');
 const Member = require('./models/member');
 
@@ -93,6 +94,8 @@ app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
     
     error.status = 404;
+    logger.info('winston - 오류');             //* winston
+    logger.error(error.message);                //* winston
     next(error);
 });
 
@@ -120,6 +123,8 @@ app.use(async (req, res, next) => {
         next(err);
     }
 });
+
+
 
 
 //* '/branding' 경로에 대한 라우터 설정 - 비동기 처리

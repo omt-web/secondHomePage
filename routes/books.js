@@ -18,8 +18,7 @@ router.route('/')
         });
         res.render('booksRouter', { page, modifiedPages });
 
-        //   res.json({ modifiedPages, pages });
-        } catch (err) {
+    } catch (err) {
         console.error(err);
         next(err);
     }
@@ -41,4 +40,5 @@ router.post('/', async (req, res) => {
         console.error('Error updating heart count: ' + err.stack);
     }
 });
+
 module.exports = router;
