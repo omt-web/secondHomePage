@@ -1,0 +1,21 @@
+/** 전체 공통 css */
+
+/* @font-face를 사용하여 외부 폰트를 지정 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media only screen and (min-width: 390px) {
+    /* 여기에 데스크탑 화면에 대한 스타일을 정의합니다. */
+    body {
+        width: 390px;
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+}
+
+body {
+    font-family: 'SUIT-Regular', sans-serif;
+}

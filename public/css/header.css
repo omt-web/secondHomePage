@@ -1,0 +1,83 @@
+/*! header.css */
+
+/** 폰트 설정 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 헤더 고정 스타일 */
+.nav {
+    position: fixed; /* 페이지 상단에 고정 */
+    top: 0; /* 페이지 상단에 배치 */
+    width: 390px; /* 화면 전체 너비로 확장 */
+    z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+    background-color: #ffffff; /* 배경색 지정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    display: flex; /* 요소들을 수평으로 배치 */
+    justify-content: space-between; /* 요소들을 좌우로 분배 */
+    align-items: center; /* 세로 가운데 정렬 */
+
+}
+
+/* 로고 스타일 */
+#logo {
+    width: 70px;
+}
+
+/* 버튼 이미지 스타일 */
+#buttonPng {
+    width: 50px;
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'SUIT-Regular', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+/* 드롭다운 내용에 포지션 관련 스타일 지정 */
+.dropdown-content a {
+    color: #5B5B5B;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* 드롭다운 내용이 보이도록 함 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdown {
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+/* 드롭다운 내용 스타일 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 310px;
+    top: 100%; /* 드롭다운 메뉴가 부모 요소 아래에 위치하도록 설정 */
+    right: 0; /* 오른쪽 정렬 */
+    z-index: 100; /* 다른 요소 위에 표시되도록 설정 */
+    text-align: right; /* 우측 정렬 */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* 드롭다운 내용 호버 스타일 */
+.dropdown-content a:hover {
+    background-color: #FFFFFF;
+}

@@ -1,0 +1,55 @@
+<!-- *넌적스 문법의 archivingBox.html -->
+{% block content %}
+
+{% include "header.html" %}
+
+<link rel="stylesheet" href="/css/style.css" /> 
+<link rel="stylesheet" href="/css/intro2.css" /> 
+
+{% include "archivingBoxIntro.html" %}
+
+<main>
+    <div class="imgContainer">
+        <img src="/images/ArchivingBox/details/1.jpg" alt="img1" id="img1">
+        <img src="/images/ArchivingBox/details/2.jpg" alt="img2" id="img2">
+        <img src="/images/ArchivingBox/details/3.jpg" alt="img3" id="img4">
+        <img src="/images/ArchivingBox/details/4.jpg" alt="img4" id="img4">
+        <img src="/images/ArchivingBox/details/5.jpg" alt="img5" id="img5">
+        <img src="/images/ArchivingBox/details/6.jpg" alt="img6" id="img6">
+        <img src="/images/ArchivingBox/details/7.jpg" alt="img7" id="img7">
+        <img src="/images/ArchivingBox/details/8.jpg" alt="img8" id="img8">
+        <img src="/images/ArchivingBox/details/9.jpg" alt="img9" id="img9">
+        <img src="/images/ArchivingBox/details/10.jpg" alt="img9" id="img10">
+        <img src="/images/ArchivingBox/details/11.jpg" alt="img9" id="img11">
+    </div>
+    <div class="heart">
+        <button onclick="likePage(6)" id="heartButton">
+            <img src="/images/heart.png" alt="heart img" id="heartImg" onclick="reloadPage()" >
+        </button>
+        <p id="heartNumber">{{ page.heart }}</p>
+    </div>
+
+    <script>
+        function likePage(pageId) {         //* 하트 증가
+            fetch('/archivingBox', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pageId: pageId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+        }        
+        
+        function reloadPage() {           // 페이지 새로고침
+            window.location.reload();
+        }
+    </script>
+</main>
+
+{% include "footer2.html" %}
+{% include "footer.html" %}
+{% endblock %}

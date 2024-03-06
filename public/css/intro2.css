@@ -1,0 +1,46 @@
+/* * branding.html 상세 설명 이미지 */
+.imgContainer {
+    justify-content: center;
+    align-items: center;
+
+}
+
+#img1, #img2, #img3, #img4, #img5, #img6, #img7, #img8, #img9, #img10, #img11 {
+    width: 350px;
+    margin: 5px 20px ;
+}
+
+#img1 {
+    margin-top: 100px;
+    padding: 0px;
+}
+
+.heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px; /* 화면 전체 높이 */
+    margin: 50px;
+    padding: 0px;
+}
+
+#heartImg {
+    width: 25px;
+    margin: 5px;
+    padding: 0px;
+}
+
+#heartNumber {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 5px;
+    padding: 0px;
+}
+
+#heartButton {
+    border-style: none;
+    background-color: #00000000;
+}

@@ -1,0 +1,39 @@
+<!--! 스크롤 확대 -->
+<body>
+    {% for page in page %}
+    <link rel="stylesheet" href="/css/brandingIntro.css" /> 
+    
+    <div class="container">
+        <div class="first-screen">
+            <div class="textContainer1">
+                <p id="name">{{ page.name }}</p>
+                <p id="version">{{ page.version }}</p>
+                <div id="date">
+                    <p id="date1">Date.</p>
+                    <p id="date2">{{ page.date }}</p>
+                </div>
+                <div id="participants">
+                    <p id="participants1">Participants.</p>
+                    {% for page in modifiedPages %}
+                    <p id="participants2">{{ page.participants }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <img src="/images/books/books1.jpg" alt="Background Image 1" id="background1">
+        </div>
+        <div class="second-screen">
+            <div class="textContainer2">
+                <p id="page">Experience makes us<br>: Books</p>
+                <p id="explanation">{{ page.explanation }}</p>
+            </div>
+            <img src="/images/books/books3.png" alt="Background Image 2" id="background2">
+        </div>
+    </div>
+    <button id="scrollButton">
+        <img src="/images/header/nav.png" id="buttonPng" alt="Scroll Down">
+    </button>
+    
+    <script  src="/js/zoomImage.js"></script>
+    {% endfor %}
+</body>
+

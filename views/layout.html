@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390">
+    <link rel="stylesheet" href="/css/style.css" /> 
+    <!-- <script src="/js/navTitle.js"></script> -->
+
+    <title id="navTitle">{{ title }} </title>
+
+
+    <!-- * / 의 위치가 기본 public 폴더로 되어있음 -->
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+
+    <!-- * 라우터에서 각각의 페이지에 맞게 include해면 삽입됨.-->
+    {% block content %}
+
+    {% endblock %}
+
+
+
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
