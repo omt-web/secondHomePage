@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //* cookie-parser 미들웨어 사용
 app.use(cookieParser(process.env.COOKIE_SECRET));
-
+console.log(process.env.COOKIE_SECRET)
 const sessionOption = {
     resave: false,
     saveUninitialized: true,
